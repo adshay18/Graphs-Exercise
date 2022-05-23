@@ -44,8 +44,10 @@ class Graph {
 	depthFirstSearch(start) {
 		let toVisitStack = [ start ];
 		let seen = new Set(toVisitStack);
+		let visited = [];
 		while (toVisitStack.length) {
 			let vertex = toVisitStack.pop();
+			visited.push(vertex.value);
 			for (let connection of vertex.adjacent) {
 				if (!seen.has(connection)) {
 					toVisitStack.push(connection);
@@ -53,10 +55,8 @@ class Graph {
 				}
 			}
 		}
-		const valArr = [];
-		seen.forEach((v) => valArr.push(v.value));
-		console.log(valArr);
-		return valArr;
+		console.log(visited);
+		return visited;
 	}
 
 	// this function returns an array of Node values using BFS
