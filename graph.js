@@ -45,7 +45,7 @@ class Graph {
 		let toVisitStack = [ start ];
 		let seen = new Set(toVisitStack);
 		while (toVisitStack.length) {
-			let vertex = toVisitStack.shift();
+			let vertex = toVisitStack.pop();
 			for (let connection of vertex.adjacent) {
 				if (!seen.has(connection)) {
 					toVisitStack.push(connection);
@@ -74,7 +74,7 @@ class Graph {
 		}
 		const valArr = [];
 		seen.forEach((v) => valArr.push(v.value));
-		console.log(valArr);
+
 		return valArr;
 	}
 }
