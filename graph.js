@@ -41,10 +41,42 @@ class Graph {
 	}
 
 	// this function returns an array of Node values using DFS
-	depthFirstSearch(start) {}
+	depthFirstSearch(start) {
+		let toVisitStack = [ start ];
+		let seen = new Set(toVisitStack);
+		while (toVisitStack.length) {
+			let vertex = toVisitStack.shift();
+			for (let connection of vertex.adjacent) {
+				if (!seen.has(connection)) {
+					toVisitStack.push(connection);
+					seen.add(connection);
+				}
+			}
+		}
+		const valArr = [];
+		seen.forEach((v) => valArr.push(v.value));
+		console.log(valArr);
+		return valArr;
+	}
 
 	// this function returns an array of Node values using BFS
-	breadthFirstSearch(start) {}
+	breadthFirstSearch(start) {
+		let toVisitQueue = [ start ];
+		let seen = new Set(toVisitQueue);
+		while (toVisitQueue.length) {
+			let vertex = toVisitQueue.shift();
+			for (let connection of vertex.adjacent) {
+				if (!seen.has(connection)) {
+					toVisitQueue.push(connection);
+					seen.add(connection);
+				}
+			}
+		}
+		const valArr = [];
+		seen.forEach((v) => valArr.push(v.value));
+		console.log(valArr);
+		return valArr;
+	}
 }
 
 module.exports = { Graph, Node };
